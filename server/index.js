@@ -3,7 +3,6 @@ const cors = require('cors');
 const multer = require('multer');
 const {createWorker} = require('tesseract.js');
 const {GoogleGenerativeAI} = require('@google/generative-ai');
-const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
 require('dotenv').config();
@@ -14,22 +13,13 @@ const PORT = process.env.PORT || 8081;
 // Initialize Google AI
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
 
-// Middleware
-app.use(
-  helmet({
-    crossOriginResourcePolicy: {
-      policy: 'cross-origin',
-    },
-  })
-);
-
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type'],
+//   })
+// );
 
 // // also handle preflight
 // app.options('*', (req, res) => {
@@ -331,8 +321,6 @@ app.post('/process-image', upload.single('image'), async (req, res) => {
     console.log('Processing text with AI...');
     // Process text with Google AI
     const aiResponse = await processTextWithAI(extractedText, requestType, difficulty);
-
-    console.log('AI response:', aiResponse);
 
     res.json({
       success: true,
