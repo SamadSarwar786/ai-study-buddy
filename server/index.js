@@ -5,6 +5,7 @@ const {createWorker} = require('tesseract.js');
 const {GoogleGenerativeAI} = require('@google/generative-ai');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -43,12 +44,12 @@ app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({extended: true, limit: '10mb'}));
 
 // Rate limiting
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 100, // limit each IP to 100 requests per windowMs
-//   message: "Too many requests from this IP, please try again later.",
-// });
-// app.use(limiter);
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+});
+app.use(limiter);
 
 async function listGeminiModels() {
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models?key=${process.env.GOOGLE_AI_API_KEY}`;
@@ -219,10 +220,10 @@ async function processTextWithAI(text, requestType = 'summarize', difficulty = '
   }
 }
 
-// Routes
-app.get('/', (req, res) => {
-  res.json({message: 'AI Study Buddy API is running!'});
-});
+// // Routes
+// app.get('/', (req, res) => {
+//   res.json({message: 'AI Study Buddy API is running!'});
+// });
 
 app.get('/health', (req, res) => {
   res.json({status: 'OK', timestamp: new Date().toISOString()});
@@ -405,13 +406,26 @@ app.use((error, req, res, next) => {
 });
 
 // 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({error: 'Route not found'});
-});
+// app.use('*', (req, res) => {
+//   res.status(404).json({error: 'Route not found'});
+// });
 
 app.listen(PORT, () => {
   console.log(`🚀 AI Study Buddy server running on port ${PORT}`);
   console.log(`📚 Ready to help students learn!`);
 });
+
+// deployment
+const dirname1 = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(dirname1, '../client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(dirname1, '../client/build/index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('AI Study Buddy API is running!');
+  });
+}
 
 module.exports = app;
