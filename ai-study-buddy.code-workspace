@@ -1,0 +1,81 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": ["esbenp.prettier-vscode", "bradlc.vscode-tailwindcss"]
+  },
+  "settings": {
+    "files.autoSave": "onFocusChange",
+    "editor.fontSize": 13,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {"strings": true},
+    "javascript.format.enable": true,
+    "css.format.enable": true,
+    "scss.format.enable": true,
+    "html.format.enable": true,
+    "json.format.enable": true,
+    "typescript.format.enable": true,
+    "prettier.tabWidth": 2,
+    "prettier.arrowParens": "always",
+    "prettier.bracketSameLine": true,
+    "prettier.bracketSpacing": false,
+    "prettier.htmlWhitespaceSensitivity": "ignore",
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 120,
+    "prettier.useTabs": false,
+    "prettier.jsxSingleQuote": false,
+    "prettier.semi": true,
+    "prettier.enable": true,
+    "prettier.endOfLine": "lf",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "monospace",
+    "debug.console.fontSize": 11,
+    "editor.tabSize": 2,
+    "javascript.validate.enable": false,
+    "typescript.validate.enable": true,
+    "css.lint.unknownAtRules": "ignore",
+    "tailwindCSS.includeLanguages": {
+      "javascript": "javascript",
+      "javascriptreact": "javascriptreact"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#265ff0",
+      "activityBar.background": "#3e80c6",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#2563eb",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#1d4ed8",
+      "statusBar.background": "#2563eb",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#1d4ed8",
+      "statusBarItem.remoteBackground": "#2563eb",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#2563eb",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#2563eb99",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#2563eb",
+    "cSpell.words": ["abhicash"]
+  }
+}

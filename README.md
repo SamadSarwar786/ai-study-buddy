@@ -33,23 +33,27 @@ An intelligent study assistant that helps you learn from images of textbooks, no
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd ai-study-buddy
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm run install-all
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cd server
    cp env.example .env
    ```
-   
+
    Edit `.env` and add your Google AI API key:
+
    ```env
    GOOGLE_AI_API_KEY=your_google_ai_api_key_here
    PORT=5000
@@ -57,6 +61,7 @@ An intelligent study assistant that helps you learn from images of textbooks, no
    ```
 
 4. **Start the application**
+
    ```bash
    cd ..
    npm run dev
@@ -102,6 +107,7 @@ ai-study-buddy/
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **React 18**: Modern React with hooks
 - **Tailwind CSS**: Utility-first CSS framework
 - **Lucide React**: Beautiful icons
@@ -109,6 +115,7 @@ ai-study-buddy/
 - **Axios**: HTTP client for API calls
 
 ### Backend
+
 - **Node.js & Express**: Server framework
 - **Tesseract.js**: OCR for text extraction
 - **Google Generative AI**: AI processing
@@ -123,6 +130,7 @@ ai-study-buddy/
 2. **OCR Processing**: Tesseract.js extracts text from the image
 
 3. **AI Analysis**: Google's Gemini AI processes the text based on the selected analysis type:
+
    - **Summarize**: Creates concise key points
    - **Explain**: Breaks down complex concepts
    - **Quiz**: Generates multiple-choice questions
@@ -133,12 +141,14 @@ ai-study-buddy/
 ## 📱 Usage Tips
 
 ### For Best OCR Results:
+
 - Use clear, well-lit images
 - Ensure text is not blurry or tilted
 - Higher resolution images work better
 - Avoid very small text
 
 ### Supported Image Formats:
+
 - JPEG/JPG
 - PNG
 - GIF
@@ -146,6 +156,7 @@ ai-study-buddy/
 - WebP
 
 ### File Size Limits:
+
 - Maximum: 10MB per image
 - Recommended: Under 5MB for faster processing
 
@@ -172,25 +183,28 @@ npm run build
 
 ### Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GOOGLE_AI_API_KEY` | Your Google AI API key | Yes |
-| `PORT` | Server port (default: 5000) | No |
-| `NODE_ENV` | Environment (development/production) | No |
+| Variable            | Description                          | Required |
+| ------------------- | ------------------------------------ | -------- |
+| `GOOGLE_AI_API_KEY` | Your Google AI API key               | Yes      |
+| `PORT`              | Server port (default: 5000)          | No       |
+| `NODE_ENV`          | Environment (development/production) | No       |
 
 ## 🚀 Deployment
 
 ### Frontend (Netlify/Vercel)
+
 1. Build the client: `cd client && npm run build`
 2. Deploy the `build` folder
 3. Set up redirects for SPA routing
 
 ### Backend (Railway/Render/Heroku)
+
 1. Deploy the `server` folder
 2. Set environment variables
 3. Ensure the build process installs dependencies
 
 ### Full Stack (Railway)
+
 1. Connect your GitHub repository
 2. Set the root directory to `/`
 3. Add environment variables

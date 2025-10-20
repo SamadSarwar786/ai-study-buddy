@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ImageUploader from './components/ImageUploader';
 import ResultsDisplay from './components/ResultsDisplay';
 import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
-import { BookOpen, Brain, FileText, HelpCircle } from 'lucide-react';
+import {Brain, HelpCircle} from 'lucide-react';
 
 function App() {
   const [results, setResults] = useState(null);
@@ -21,7 +21,7 @@ function App() {
     formData.append('requestType', requestType);
 
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL+'/process-image', {
+      const response = await fetch(process.env.REACT_APP_API_URL + '/process-image', {
         method: 'POST',
         body: formData,
       });
@@ -49,7 +49,7 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL+'/process-text', {
+      const response = await fetch(process.env.REACT_APP_API_URL + '/process-text', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Hero Section */}
         {!results && !loading && false && (
@@ -94,14 +94,12 @@ function App() {
                 <Brain className="w-12 h-12 text-primary-600" />
               </div>
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              AI Study Buddy
-            </h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">AI Study Buddy</h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Upload images of textbooks, notes, or documents and get instant summaries, 
-              explanations, and quiz questions powered by AI.
+              Upload images of textbooks, notes, or documents and get instant summaries, explanations, and quiz
+              questions powered by AI.
             </p>
-            
+
             {/* Features */}
             {/* <div className="grid md:grid-cols-3 gap-6 mb-12">
               <div className="card text-center">
@@ -141,10 +139,7 @@ function App() {
                 <p className="text-red-700">{error}</p>
               </div>
             </div>
-            <button
-              onClick={resetApp}
-              className="mt-4 btn-primary bg-red-600 hover:bg-red-700"
-            >
+            <button onClick={resetApp} className="mt-4 btn-primary bg-red-600 hover:bg-red-700">
               Try Again
             </button>
           </div>
@@ -157,14 +152,12 @@ function App() {
           </div>
         )}
 
-
-{/* results ? "grid lg:grid-cols-2 gap-8" :  */}
+        {/* results ? "grid lg:grid-cols-2 gap-8" :  */}
         {/* Main Content */}
         {!loading && (
-          <div className={"flex justify-center"}>
-
-              {/* Results Section */}
-              {results && (
+          <div className={'flex justify-center'}>
+            {/* Results Section */}
+            {results && (
               <div className="space-y-6">
                 <ResultsDisplay
                   results={results}
@@ -175,14 +168,11 @@ function App() {
               </div>
             )}
             {/* Upload Section */}
-            {!results && <div className={results ? "space-y-6" : "w-full max-w-2xl"}>
-              <ImageUploader 
-                onImageProcess={handleImageProcess}
-                disabled={loading}
-              />
-            </div>}
-
-          
+            {!results && (
+              <div className={results ? 'space-y-6' : 'w-full max-w-2xl'}>
+                <ImageUploader onImageProcess={handleImageProcess} disabled={loading} />
+              </div>
+            )}
           </div>
         )}
       </main>

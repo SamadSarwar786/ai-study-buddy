@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Github, Star } from 'lucide-react';
+import {Brain, Star} from 'lucide-react';
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
               <p className="text-sm text-gray-500">Smart learning assistant</p>
             </div>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <div className="hidden sm:flex items-center space-x-2 text-sm text-gray-600">
               <Star className="w-4 h-4 text-yellow-500" />

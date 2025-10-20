@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { Upload, Camera, FileText, BookOpen, HelpCircle, Sparkles } from 'lucide-react';
+import React, {useState, useCallback} from 'react';
+import {useDropzone} from 'react-dropzone';
+import {Upload, Camera, FileText, BookOpen, HelpCircle, Sparkles} from 'lucide-react';
 
-const ImageUploader = ({ onImageProcess, disabled }) => {
+const ImageUploader = ({onImageProcess, disabled}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [requestType, setRequestType] = useState('summarize');
   const [preview, setPreview] = useState(null);
@@ -11,7 +11,7 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
     const file = acceptedFiles[0];
     if (file) {
       setSelectedFile(file);
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -21,13 +21,13 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
     }
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.jpg', '.png', '.gif', '.bmp', '.webp']
+      'image/*': ['.jpeg', '.jpg', '.png', '.gif', '.bmp', '.webp'],
     },
     multiple: false,
-    disabled
+    disabled,
   });
 
   const handleSubmit = (e) => {
@@ -48,70 +48,61 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
       label: 'Summarize',
       description: 'Get key points and main ideas',
       icon: FileText,
-      color: 'text-blue-600'
+      color: 'text-blue-600',
     },
     {
       value: 'explain',
       label: 'Explain',
       description: 'Break down complex concepts',
       icon: BookOpen,
-      color: 'text-green-600'
+      color: 'text-green-600',
     },
     {
       value: 'quiz',
       label: 'Quiz Me',
       description: 'Generate practice questions',
       icon: HelpCircle,
-      color: 'text-purple-600'
+      color: 'text-purple-600',
     },
     {
       value: 'notes',
       label: 'Study Notes',
       description: 'Create organized notes',
       icon: Sparkles,
-      color: 'text-orange-600'
-    }
+      color: 'text-orange-600',
+    },
   ];
 
   return (
     <div className="space-y-6">
       <div className="card">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          Upload Your Study Material
-        </h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Upload Your Study Material</h2>
 
         {/* File Upload Area */}
         <div
           {...getRootProps()}
           className={`
             border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
-            ${isDragActive 
-              ? 'border-primary-400 bg-primary-50' 
-              : 'border-gray-300 hover:border-primary-400 hover:bg-gray-50'
+            ${
+              isDragActive
+                ? 'border-primary-400 bg-primary-50'
+                : 'border-gray-300 hover:border-primary-400 hover:bg-gray-50'
             }
             ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-          `}
-        >
+          `}>
           <input {...getInputProps()} />
-          
+
           {preview ? (
             <div className="space-y-4">
-              <img
-                src={preview}
-                alt="Preview"
-                className="max-w-sm max-h-20 mx-auto rounded-lg shadow-md"
-              />
+              <img src={preview} alt="Preview" className="max-w-sm max-h-20 mx-auto rounded-lg shadow-md" />
               <div className="flex items-center justify-center space-x-2">
-                <span className="text-sm font-medium text-gray-700">
-                  {selectedFile?.name}
-                </span>
+                <span className="text-sm font-medium text-gray-700">{selectedFile?.name}</span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     clearFile();
                   }}
-                  className="text-red-600 hover:text-red-800 text-sm underline"
-                >
+                  className="text-red-600 hover:text-red-800 text-sm underline">
                   Remove
                 </button>
               </div>
@@ -129,9 +120,7 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
                 <p className="text-lg font-medium text-gray-700 mb-2">
                   {isDragActive ? 'Drop your image here' : 'Upload an image'}
                 </p>
-                <p className="text-sm text-gray-500">
-                  Drag & drop or click to select • PNG, JPG, GIF up to 10MB
-                </p>
+                <p className="text-sm text-gray-500">Drag & drop or click to select • PNG, JPG, GIF up to 10MB</p>
               </div>
             </div>
           )}
@@ -139,9 +128,7 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
 
         {/* Request Type Selection */}
         <div className="mt-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-3">
-            What would you like me to do?
-          </h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">What would you like me to do?</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             {requestTypes.map((type) => {
               const IconComponent = type.icon;
@@ -150,12 +137,12 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
                   key={type.value}
                   className={`
                     relative flex items-center p-4 border rounded-lg cursor-pointer transition-all
-                    ${requestType === type.value
-                      ? 'border-primary-500 bg-primary-50 ring-2 ring-primary-200'
-                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                    ${
+                      requestType === type.value
+                        ? 'border-primary-500 bg-primary-50 ring-2 ring-primary-200'
+                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                     }
-                  `}
-                >
+                  `}>
                   <input
                     type="radio"
                     name="requestType"
@@ -188,12 +175,12 @@ const ImageUploader = ({ onImageProcess, disabled }) => {
           disabled={!selectedFile || disabled}
           className={`
             w-full mt-6 py-3 px-4 rounded-lg font-medium transition-colors
-            ${selectedFile && !disabled
-              ? 'bg-primary-600 hover:bg-primary-700 text-white'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            ${
+              selectedFile && !disabled
+                ? 'bg-primary-600 hover:bg-primary-700 text-white'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }
-          `}
-        >
+          `}>
           {disabled ? 'Processing...' : 'Analyze Image'}
         </button>
       </div>
