@@ -21,15 +21,6 @@ const Header = () => {
               <Star className="w-4 h-4 text-yellow-500" />
               <span>Free to use</span>
             </div>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
-              title="View on GitHub"
-            >
-              <Github className="w-5 h-5" />
-            </a>
           </div>
         </div>
       </div>
