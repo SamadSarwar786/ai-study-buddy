@@ -1,0 +1,14 @@
+{
+  "name": "ai-study-buddy",
+  "version": "1.0.0",
+  "description": "An intelligent study assistant that helps you learn from images of textbooks, notes, and documents. Upload any image containing text and get instant summaries, explanations, quiz questions, and study notes powered by AI.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build-client && npm run build-server",
+    "build-client": "cd client && npm run build",
+    "build-server": "cd server && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
